@@ -49,6 +49,7 @@ void ScoreView::lyricsUpDown(bool up, bool end)
             lyrics->setTrack(track);
             lyrics->setParent(cr);
             lyrics->setNo(verse);
+            lyrics->copyUserFromPrevious();
             _score->undoAddElement(lyrics);
             }
 
@@ -132,6 +133,7 @@ void ScoreView::lyricsTab(bool back, bool end, bool moveOnly)
             toLyrics->setParent(cr);
             toLyrics->setNo(verse);
             toLyrics->setSyllabic(Lyrics::Syllabic::SINGLE);
+            toLyrics->copyUserFromPrevious();
             newLyrics = true;
             }
 
@@ -236,6 +238,7 @@ void ScoreView::lyricsMinus()
             toLyrics->setTrack(track);
             toLyrics->setParent(nextSegment->element(track));
             toLyrics->setNo(verse);
+            toLyrics->copyUserFromPrevious();
             toLyrics->setSyllabic(Lyrics::Syllabic::END);
             }
       else {
@@ -358,6 +361,7 @@ void ScoreView::lyricsUnderscore()
             toLyrics->setTrack(track);
             toLyrics->setParent(nextSegment->element(track));
             toLyrics->setNo(verse);
+            toLyrics->copyUserFromPrevious();
             toLyrics->setSyllabic(Lyrics::Syllabic::SINGLE);
             }
       // as we arrived at toLyrics by an underscore, it cannot have syllabic dashes before

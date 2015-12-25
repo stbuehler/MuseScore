@@ -101,6 +101,8 @@ class Lyrics : public Text {
       Measure* measure() const                        { return (Measure*)parent()->parent()->parent(); }
       ChordRest* chordRest() const                    { return (ChordRest*)parent(); }
 
+      void copyUserFromPrevious();
+
       virtual void layout() override;
       virtual void layout1() override;
 

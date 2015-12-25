@@ -2410,6 +2410,7 @@ Lyrics* Score::addLyrics()
       lyrics->setTrack(cr->track());
       lyrics->setParent(cr);
       lyrics->setNo(no);
+      lyrics->copyUserFromPrevious();
       undoAddElement(lyrics);
       select(lyrics, SelectType::SINGLE, 0);
       return lyrics;
