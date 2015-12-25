@@ -509,6 +509,24 @@ Element* Lyrics::drop(const DropData& data)
       }
 
 //---------------------------------------------------------
+//   copyUserFromPrevious
+//---------------------------------------------------------
+
+void Lyrics::copyUserFromPrevious()
+      {
+            Segment* s = segment();
+            while ((s = s->prev1(Segment::Type::ChordRest))) {
+                  ChordRest* prevCr = s->cr(track());
+                  Lyrics *prevLyrics;
+                  if (prevCr && nullptr != (prevLyrics = prevCr->lyrics(no()))) {
+                        setUserOff(prevLyrics->userOff());
+                        setColor(prevLyrics->color());
+                        break;
+                        }
+                  }
+      }
+
+//---------------------------------------------------------
 //   setNo
 //---------------------------------------------------------
 
